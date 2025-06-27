@@ -1,0 +1,34 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "assets/images"
+public_folder: "/assets/images"
+
+collections:
+  - name: "homepage"
+    label: "Homepage Content"
+    files:
+      - file: "_data/homepage.yml"
+        label: "Homepage"
+        name: "homepage"
+        fields:
+          - { label: "FAQ", name: "faq", widget: "markdown" }
+          - { label: "IMDB", name: "imdb", widget: "text" }
+          - label: "Family Images"
+            name: "family"
+            widget: "list"
+            fields:
+              - { label: "Image", name: "image", widget: "image" }
+          - label: "Fan Images"
+            name: "fans"
+            widget: "list"
+            fields:
+              - { label: "Image", name: "image", widget: "image" }
+          - label: "Shop Items"
+            name: "shop"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Link", name: "link", widget: "string" }

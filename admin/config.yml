@@ -6,41 +6,129 @@ media_folder: "assets/images"
 public_folder: "/assets/images"
 
 collections:
-  - name: "gallery"
-    label: "Photo Gallery"
-    folder: "assets/images"
-    create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Image", name: "image", widget: "image"}
-      - {label: "Alt Text", name: "alt", widget: "string"}
-      - {label: "Description", name: "description", widget: "text", required: false}
-      - {label: "Tags", name: "tags", widget: "list", required: false}
-      - {label: "Featured", name: "featured", widget: "boolean", default: false}
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - label: "Global Settings"
+        name: "settings"
+        file: "_data/settings.json"
+        fields:
+          - {label: "Site Title", name: "site_title", widget: "string", default: "Lyrical Dragon"}
+          - {label: "Site Description", name: "site_description", widget: "text"}
+          - {label: "Contact Email", name: "contact_email", widget: "string"}
+          - {label: "Contact Phone", name: "contact_phone", widget: "string"}
+          - label: "Social Media Links"
+            name: "social_links"
+            widget: "object"
+            fields:
+              - {label: "Instagram", name: "instagram", widget: "string", required: false}
+              - {label: "Twitter", name: "twitter", widget: "string", required: false}
+              - {label: "YouTube", name: "youtube", widget: "string", required: false}
+              - {label: "Spotify", name: "spotify", widget: "string", required: false}
+              - {label: "SoundCloud", name: "soundcloud", widget: "string", required: false}
 
   - name: "pages"
-    label: "Website Content"
+    label: "Page Content"
     files:
       - label: "Home Page"
         name: "home"
         file: "_data/home.json"
         fields:
-          - {label: "Site Title", name: "title", widget: "string", default: "Lyrical Dragon"}
-          - {label: "Hero Headline", name: "hero_headline", widget: "string"}
-          - {label: "Hero Subtitle", name: "hero_subtitle", widget: "string"}
-          - {label: "About Text", name: "about_text", widget: "markdown"}
-          - {label: "Contact Text", name: "contact_text", widget: "markdown"}
-      
-      - label: "Site Settings"
-        name: "settings"
-        file: "_data/settings.json"
+          - label: "Hero Section"
+            name: "hero"
+            widget: "object"
+            fields:
+              - {label: "Title", name: "title", widget: "string", default: "Lyrical Dragon"}
+              - {label: "Subtitle", name: "subtitle", widget: "string", default: "Spitting Fire Through Verses"}
+              - {label: "Background Video", name: "background_video", widget: "file", required: false}
+          
+          - label: "About Section"
+            name: "about"
+            widget: "object"
+            fields:
+              - {label: "Main Image", name: "image", widget: "image"}
+              - {label: "Bio Text 1", name: "bio_text_1", widget: "text"}
+              - {label: "Bio Text 2", name: "bio_text_2", widget: "text"}
+              - label: "Statistics"
+                name: "stats"
+                widget: "list"
+                fields:
+                  - {label: "Number", name: "number", widget: "string"}
+                  - {label: "Label", name: "label", widget: "string"}
+          
+          - label: "Music Section"
+            name: "music"
+            widget: "list"
+            fields:
+              - {label: "Track Title", name: "title", widget: "string"}
+              - {label: "Album/EP Name", name: "album", widget: "string"}
+              - {label: "Cover Image", name: "image", widget: "image"}
+              - {label: "Spotify Link", name: "spotify_link", widget: "string", required: false}
+              - {label: "Apple Music Link", name: "apple_music_link", widget: "string", required: false}
+              - {label: "YouTube Link", name: "youtube_link", widget: "string", required: false}
+          
+          - label: "Gallery"
+            name: "gallery"
+            widget: "list"
+            fields:
+              - {label: "Image", name: "src", widget: "image"}
+              - {label: "Alt Text", name: "alt", widget: "string"}
+              - {label: "Caption", name: "caption", widget: "string", required: false}
+
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "_posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Featured Image", name: "featured_image", widget: "image", required: false}
+      - {label: "Excerpt", name: "excerpt", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Tags", name: "tags", widget: "list", required: false}
+
+  - name: "events"
+    label: "Events & Shows"
+    folder: "_events"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Event Name", name: "title", widget: "string"}
+      - {label: "Date", name: "date", widget: "datetime"}
+      - {label: "Venue", name: "venue", widget: "string"}
+      - {label: "City", name: "city", widget: "string"}
+      - {label: "State/Country", name: "location", widget: "string"}
+      - {label: "Ticket Link", name: "ticket_link", widget: "string", required: false}
+      - {label: "Event Image", name: "image", widget: "image", required: false}
+      - {label: "Description", name: "description", widget: "text", required: false}
+      - {label: "Price", name: "price", widget: "string", required: false}
+
+  - name: "discography"
+    label: "Discography"
+    folder: "_releases"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Release Date", name: "release_date", widget: "date"}
+      - {label: "Type", name: "type", widget: "select", options: ["Album", "EP", "Single", "Mixtape"]}
+      - {label: "Cover Art", name: "cover_art", widget: "image"}
+      - {label: "Description", name: "description", widget: "text"}
+      - label: "Streaming Links"
+        name: "streaming_links"
+        widget: "object"
         fields:
-          - {label: "Site Title", name: "site_title", widget: "string"}
-          - {label: "Site Description", name: "description", widget: "text"}
-          - {label: "Contact Email", name: "email", widget: "string", required: false}
-          - {label: "Social Media", name: "social", widget: "object", fields: [
-              {label: "Instagram", name: "instagram", widget: "string", required: false},
-              {label: "Facebook", name: "facebook", widget: "string", required: false},
-              {label: "Twitter", name: "twitter", widget: "string", required: false}
-            ]}
+          - {label: "Spotify", name: "spotify", widget: "string", required: false}
+          - {label: "Apple Music", name: "apple_music", widget: "string", required: false}
+          - {label: "YouTube Music", name: "youtube_music", widget: "string", required: false}
+          - {label: "SoundCloud", name: "soundcloud", widget: "string", required: false}
+          - {label: "Bandcamp", name: "bandcamp", widget: "string", required: false}
+      - label: "Track List"
+        name: "tracks"
+        widget: "list"
+        fields:
+          - {label: "Track Number", name: "number", widget: "number"}
+          - {label: "Track Title", name: "title", widget: "string"}
+          - {label: "Duration", name: "duration", widget: "string", required: false}
+          - {label: "Featured Artists", name: "featured", widget: "string", required: false}

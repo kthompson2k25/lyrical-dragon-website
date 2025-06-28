@@ -3,79 +3,350 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lyrical Dragon</title>
+    <title>Lyrical Dragon - Rap Artist</title>
     <link rel="stylesheet" href="assets/css/style.css">
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="nav-container">
-                <h1 class="logo">Lyrical Dragon</h1>
-                <div class="nav-links">
-                    <a href="#home">Home</a>
-                    <a href="#gallery">Gallery</a>
-                    <a href="#about">About</a>
-                    <a href="#contact">Contact</a>
-                </div>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>Lyrical Dragon</h2>
             </div>
-        </nav>
-    </header>
-
-    <main>
-        <section id="home" class="hero">
-            <div class="hero-content">
-                <h2>Welcome to Lyrical Dragon</h2>
-                <p>Capturing moments through the lens</p>
+            <div class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#music" class="nav-link">Music</a>
+                <a href="#gallery" class="nav-link">Gallery</a>
+                <a href="#contact" class="nav-link">Contact</a>
             </div>
-        </section>
-
-        <section id="gallery" class="gallery">
-            <div class="container">
-                <h2>Photo Gallery</h2>
-                <div class="gallery-grid" id="gallery-grid">
-                    <!-- Images will be loaded here -->
-                </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
-        </section>
+        </div>
+    </nav>
 
-        <section id="about" class="about">
-            <div class="container">
-                <h2>About</h2>
-                <p>This is where your story goes. Update this content through the admin panel.</p>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Lyrical Dragon</h1>
+            <p class="hero-subtitle">Spitting Fire Through Verses</p>
+            <div class="hero-buttons">
+                <a href="#music" class="btn btn-primary">Listen Now</a>
+                <a href="#contact" class="btn btn-secondary">Book Me</a>
             </div>
-        </section>
+        </div>
+        <div class="hero-video">
+            <video autoplay muted loop>
+                <source src="assets/videos/hero-video.mp4" type="video/mp4">
+            </video>
+        </div>
+    </section>
 
-        <section id="contact" class="contact">
-            <div class="container">
-                <h2>Contact</h2>
-                <p>Get in touch to discuss your photography needs.</p>
-            </div>
-        </section>
-    </main>
-
-    <footer>
+    <!-- About Section -->
+    <section id="about" class="about">
         <div class="container">
-            <p>&copy; 2025 Lyrical Dragon. All rights reserved.</p>
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About Lyrical Dragon</h2>
+                    <p>Born from the streets and raised on rhythm, Lyrical Dragon brings authentic storytelling and powerful beats that resonate with real experiences. With a unique flow that combines old-school lyricism with modern production, every track is a journey through raw emotion and undeniable talent.</p>
+                    <p>From underground battles to studio mastery, Lyrical Dragon has evolved into a force that commands attention and respect in the hip-hop community.</p>
+                    <div class="stats">
+                        <div class="stat">
+                            <h3>500K+</h3>
+                            <p>Streams</p>
+                        </div>
+                        <div class="stat">
+                            <h3>50+</h3>
+                            <p>Shows</p>
+                        </div>
+                        <div class="stat">
+                            <h3>10+</h3>
+                            <p>Awards</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="assets/images/artist-photo.jpg" alt="Lyrical Dragon" id="about-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Music Section -->
+    <section id="music" class="music">
+        <div class="container">
+            <h2>Latest Tracks</h2>
+            <div class="music-grid" id="music-grid">
+                <!-- Music tracks will be loaded dynamically -->
+                <div class="music-card">
+                    <div class="music-image">
+                        <img src="assets/images/album1.jpg" alt="Track 1">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="music-info">
+                        <h3>Fire Verses</h3>
+                        <p>Latest Single</p>
+                    </div>
+                </div>
+                
+                <div class="music-card">
+                    <div class="music-image">
+                        <img src="assets/images/album2.jpg" alt="Track 2">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="music-info">
+                        <h3>Street Stories</h3>
+                        <p>EP Release</p>
+                    </div>
+                </div>
+                
+                <div class="music-card">
+                    <div class="music-image">
+                        <img src="assets/images/album3.jpg" alt="Track 3">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="music-info">
+                        <h3>Dragon's Breath</h3>
+                        <p>Debut Album</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2>Gallery</h2>
+            <div class="gallery-grid" id="gallery-grid">
+                <!-- Gallery images will be loaded dynamically from CMS -->
+                <div class="gallery-item">
+                    <img src="assets/images/gallery1.jpg" alt="Performance 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/images/gallery2.jpg" alt="Studio Session">
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/images/gallery3.jpg" alt="Behind the Scenes">
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/images/gallery4.jpg" alt="Live Performance">
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/images/gallery5.jpg" alt="Recording">
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/images/gallery6.jpg" alt="Concert">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Let's Work Together</h3>
+                    <p>Ready to bring the fire to your venue or collaborate on your next project? Hit me up!</p>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>booking@lyricaldragon.com</span>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+1 (555) 123-4567</span>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-spotify"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-soundcloud"></i></a>
+                    </div>
+                </div>
+                
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <select name="subject" required>
+                            <option value="">Select Subject</option>
+                            <option value="booking">Booking Inquiry</option>
+                            <option value="collaboration">Collaboration</option>
+                            <option value="general">General Question</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Lyrical Dragon</h3>
+                    <p>Authentic rap music that speaks to the soul and moves the crowd.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#music">Music</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Me</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-spotify"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Lyrical Dragon. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
+    <!-- JavaScript -->
     <script>
-        // Netlify Identity widget
-        if (window.netlifyIdentity) {
-            window.netlifyIdentity.on("init", user => {
-                if (!user) {
-                    window.netlifyIdentity.on("login", () => {
-                        document.location.href = "/admin/";
+        // Mobile Navigation Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
                     });
                 }
             });
+        });
+
+        // Contact form submission
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! I\'ll get back to you soon.');
+            this.reset();
+        });
+
+        // Load content from JSON files (for CMS integration)
+        async function loadContent() {
+            try {
+                // Load home content
+                const homeResponse = await fetch('_data/home.json');
+                if (homeResponse.ok) {
+                    const homeData = await homeResponse.json();
+                    updateHomeContent(homeData);
+                }
+
+                // Load settings
+                const settingsResponse = await fetch('_data/settings.json');
+                if (settingsResponse.ok) {
+                    const settingsData = await settingsResponse.json();
+                    updateSettings(settingsData);
+                }
+            } catch (error) {
+                console.log('Using default content');
+            }
         }
 
-        // Simple gallery loader (you can enhance this later)
-        document.addEventListener('DOMContentLoaded', function() {
-            // This is a placeholder - you can add dynamic image loading here
-            console.log('Lyrical Dragon website loaded');
+        function updateHomeContent(data) {
+            if (data.hero) {
+                const heroTitle = document.querySelector('.hero-title');
+                const heroSubtitle = document.querySelector('.hero-subtitle');
+                if (heroTitle && data.hero.title) heroTitle.textContent = data.hero.title;
+                if (heroSubtitle && data.hero.subtitle) heroSubtitle.textContent = data.hero.subtitle;
+            }
+
+            if (data.about && data.about.image) {
+                const aboutImage = document.getElementById('about-image');
+                if (aboutImage) aboutImage.src = data.about.image;
+            }
+
+            if (data.gallery && data.gallery.length > 0) {
+                updateGallery(data.gallery);
+            }
+        }
+
+        function updateSettings(data) {
+            if (data.site_title) {
+                document.title = data.site_title;
+                document.querySelector('.nav-logo h2').textContent = data.site_title;
+            }
+        }
+
+        function updateGallery(images) {
+            const galleryGrid = document.getElementById('gallery-grid');
+            if (galleryGrid && images.length > 0) {
+                galleryGrid.innerHTML = '';
+                images.forEach(image => {
+                    const galleryItem = document.createElement('div');
+                    galleryItem.className = 'gallery-item';
+                    galleryItem.innerHTML = `<img src="${image.src}" alt="${image.alt || 'Gallery Image'}">`;
+                    galleryGrid.appendChild(galleryItem);
+                });
+            }
+        }
+
+        // Initialize content loading
+        loadContent();
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
         });
     </script>
 </body>

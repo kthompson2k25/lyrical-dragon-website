@@ -1,7 +1,84 @@
 {
-  "title": "Lyrical Dragon",
-  "hero_headline": "Welcome to Lyrical Dragon",
-  "hero_subtitle": "Capturing moments through the lens",
-  "about_text": "Welcome to Lyrical Dragon, where every photograph tells a story. Our passion for capturing life's precious moments drives us to create stunning imagery that preserves your memories for generations to come.",
-  "contact_text": "Ready to capture your special moments? Get in touch with us today to discuss your photography needs. We'd love to help bring your vision to life."
+  "hero": {
+    "title": "Lyrical Dragon",
+    "subtitle": "Spitting Fire Through Verses",
+    "background_video": "/assets/videos/hero-video.mp4"
+  },
+  "about": {
+    "image": "/assets/images/artist-photo.jpg",
+    "bio_text_1": "Born from the streets and raised on rhythm, Lyrical Dragon brings authentic storytelling and powerful beats that resonate with real experiences. With a unique flow that combines old-school lyricism with modern production, every track is a journey through raw emotion and undeniable talent.",
+    "bio_text_2": "From underground battles to studio mastery, Lyrical Dragon has evolved into a force that commands attention and respect in the hip-hop community.",
+    "stats": [
+      {
+        "number": "500K+",
+        "label": "Streams"
+      },
+      {
+        "number": "50+",
+        "label": "Shows"
+      },
+      {
+        "number": "10+",
+        "label": "Awards"
+      }
+    ]
+  },
+  "music": [
+    {
+      "title": "Fire Verses",
+      "album": "Latest Single",
+      "image": "/assets/images/album1.jpg",
+      "spotify_link": "https://open.spotify.com/track/example1",
+      "apple_music_link": "https://music.apple.com/us/album/example1",
+      "youtube_link": "https://youtube.com/watch?v=example1"
+    },
+    {
+      "title": "Street Stories",
+      "album": "EP Release",
+      "image": "/assets/images/album2.jpg",
+      "spotify_link": "https://open.spotify.com/album/example2",
+      "apple_music_link": "https://music.apple.com/us/album/example2",
+      "youtube_link": "https://youtube.com/watch?v=example2"
+    },
+    {
+      "title": "Dragon's Breath",
+      "album": "Debut Album",
+      "image": "/assets/images/album3.jpg",
+      "spotify_link": "https://open.spotify.com/album/example3",
+      "apple_music_link": "https://music.apple.com/us/album/example3",
+      "youtube_link": "https://youtube.com/watch?v=example3"
+    }
+  ],
+  "gallery": [
+    {
+      "src": "/assets/images/gallery1.jpg",
+      "alt": "Performance 1",
+      "caption": "Live performance at downtown venue"
+    },
+    {
+      "src": "/assets/images/gallery2.jpg",
+      "alt": "Studio Session",
+      "caption": "Recording latest tracks in the studio"
+    },
+    {
+      "src": "/assets/images/gallery3.jpg",
+      "alt": "Behind the Scenes",
+      "caption": "Behind the scenes of music video shoot"
+    },
+    {
+      "src": "/assets/images/gallery4.jpg",
+      "alt": "Live Performance",
+      "caption": "Energetic crowd at recent show"
+    },
+    {
+      "src": "/assets/images/gallery5.jpg",
+      "alt": "Recording",
+      "caption": "Working on new material"
+    },
+    {
+      "src": "/assets/images/gallery6.jpg",
+      "alt": "Concert",
+      "caption": "Headlining at music festival"
+    }
+  ]
 }

@@ -1,14 +1,17 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lyrical Dragon CMS</title>
+  <title>Content Manager - Lyrical Dragon</title>
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
+  <!-- Include the script that builds the page and powers Netlify CMS -->
   <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+  
   <script>
+    // Initialize Netlify Identity
     if (window.netlifyIdentity) {
       window.netlifyIdentity.on("init", user => {
         if (!user) {
@@ -18,6 +21,142 @@
         }
       });
     }
+
+    // Custom preview styles for the CMS
+    CMS.registerPreviewStyle("/assets/css/style.css");
+    
+    // Custom preview template for blog posts
+    const PostPreview = ({ entry, widgetFor, widgetsFor, getAsset }) => {
+      const title = entry.getIn(['data', 'title']);
+      const date = entry.getIn(['data', 'date']);
+      const body = widgetFor('body');
+      const image = getAsset(entry.getIn(['data', 'featured_image']));
+      
+      return h('div', {className: 'post-preview'},
+        h('h1', {}, title),
+        h('p', {}, date && date.toDateString()),
+        image && h('img', {src: image.toString()}),
+        h('div', {className: 'post-content'}, body)
+      );
+    };
+
+    // Custom preview template for events
+    const EventPreview = ({ entry, widgetFor, getAsset }) => {
+      const title = entry.getIn(['data', 'title']);
+      const date = entry.getIn(['data', 'date']);
+      const venue = entry.getIn(['data', 'venue']);
+      const city = entry.getIn(['data', 'city']);
+      const location = entry.getIn(['data', 'location']);
+      const description = entry.getIn(['data', 'description']);
+      const image = getAsset(entry.getIn(['data', 'image']));
+      
+      return h('div', {className: 'event-preview'},
+        h('h1', {}, title),
+        image && h('img', {src: image.toString(), style: {maxWidth: '300px'}}),
+        h('div', {className: 'event-details'},
+          h('p', {}, `Date: ${date && date.toDateString()}`),
+          h('p', {}, `Venue: ${venue}`),
+          h('p', {}, `Location: ${city}, ${location}`)
+        ),
+        description && h('p', {}, description)
+      );
+    };
+
+    // Custom preview template for releases
+    const ReleasePreview = ({ entry, widgetFor, widgetsFor, getAsset }) => {
+      const title = entry.getIn(['data', 'title']);
+      const type = entry.getIn(['data', 'type']);
+      const releaseDate = entry.getIn(['data', 'release_date']);
+      const description = entry.getIn(['data', 'description']);
+      const coverArt = getAsset(entry.getIn(['data', 'cover_art']));
+      const tracks = widgetsFor('tracks');
+      
+      return h('div', {className: 'release-preview'},
+        h('div', {style: {display: 'flex', gap: '20px'}},
+          coverArt && h('img', {src: coverArt.toString(), style: {width: '200px', height: '200px', objectFit: 'cover'}}),
+          h('div', {},
+            h('h1', {}, title),
+            h('p', {}, `${type} • ${releaseDate && releaseDate.toDateString()}`),
+            description && h('p', {}, description)
+          )
+        ),
+        tracks && h('div', {style: {marginTop: '20px'}},
+          h('h3', {}, 'Track List'),
+          h('ol', {},
+            tracks.map((track, index) => 
+              h('li', {key: index}, 
+                track.getIn(['data', 'title']),
+                track.getIn(['data', 'duration']) && ` (${track.getIn(['data', 'duration'])})`
+              )
+            )
+          )
+        )
+      );
+    };
+
+    // Register preview templates
+    CMS.registerPreviewTemplate("blog", PostPreview);
+    CMS.registerPreviewTemplate("events", EventPreview);
+    CMS.registerPreviewTemplate("discography", ReleasePreview);
+
+    // Custom editor components
+    CMS.registerEditorComponent({
+      id: "youtube",
+      label: "YouTube",
+      fields: [
+        {
+          name: "id",
+          label: "YouTube Video ID",
+          widget: "string",
+          hint: "Enter the video ID from the YouTube URL (e.g., dQw4w9WgXcQ)"
+        }
+      ],
+      pattern: /^{{< youtube (\S+) >}}$/,
+      fromBlock: function(match) {
+        return {
+          id: match[1]
+        };
+      },
+      toBlock: function(obj) {
+        return `{{< youtube ${obj.id} >}}`;
+      },
+      toPreview: function(obj) {
+        return `<iframe width="560" height="315" src="https://www.youtube.com/embed/${obj.id}" frameborder="0" allowfullscreen></iframe>`;
+      }
+    });
+
+    CMS.registerEditorComponent({
+      id: "spotify",
+      label: "Spotify Embed",
+      fields: [
+        {
+          name: "id",
+          label: "Spotify Track/Album ID",
+          widget: "string",
+          hint: "Enter the Spotify ID from the share URL"
+        },
+        {
+          name: "type",
+          label: "Type",
+          widget: "select",
+          options: ["track", "album", "playlist"],
+          default: "track"
+        }
+      ],
+      pattern: /^{{< spotify (\S+) (\S+) >}}$/,
+      fromBlock: function(match) {
+        return {
+          type: match[1],
+          id: match[2]
+        };
+      },
+      toBlock: function(obj) {
+        return `{{< spotify ${obj.type} ${obj.id} >}}`;
+      },
+      toPreview: function(obj) {
+        return `<iframe src="https://open.spotify.com/embed/${obj.type}/${obj.id}" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>`;
+      }
+    });
   </script>
 </body>
 </html>
